@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     get "/locations" => "locations#index"
     post "/locations" => "locations#create"
 
+    get "/reviews" => "reviews#index"
+    post "/locations" => "locations#create"
+
+
 
 
   end
