@@ -104,7 +104,7 @@ elsif input_option == "4"
   print "Enter review body: "
   params["input_body"] = gets.chomp
   print "Enter location ID: "
-  params["input_id"] = gets.chomp
+  params["location_id"] = gets.chomp
 
   response = Unirest.post("http://localhost:3000/v1/reviews", parameters: params)
   reviews = response.body
