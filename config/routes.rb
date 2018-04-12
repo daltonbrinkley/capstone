@@ -8,10 +8,7 @@ Rails.application.routes.draw do
     post "/locations" => "locations#create"
 
     get "/reviews" => "reviews#index"
-    post "/locations" => "locations#create"
-
-
-
+    post "/reviews" => "reviews#create"
 
   end
 end

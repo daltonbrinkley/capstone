@@ -62,9 +62,11 @@ puts "Your jwt is #{jwt}
 "
 
 puts "Choose an option"
-puts "[1] Locations Index (all locations)"
+puts "[1] Locations Index (ALL locations)"
 puts "[2] Search Locations by Name: "
-puts "[3] Create a product!" 
+puts "[3] Create a profile for a NEW Location!"
+puts "[4] Create a NEW review"
+puts "[5] Show ALL reviews"
 
 input_option = gets.chomp
 if input_option == "1"
@@ -79,7 +81,7 @@ elsif input_option == "2"
   location = response.body
   puts JSON.pretty_generate(location)
 
-  elsif input_option == "3"
+elsif input_option == "3"
   params = {}
   print "Enter location name: "
   params["input_name"] = gets.chomp
@@ -94,4 +96,21 @@ elsif input_option == "2"
 
   response = Unirest.post("http://localhost:3000/v1/locations", parameters: params)
   locations = response.body
+
+elsif input_option == "4"
+  params = {}
+  print "Enter review title: "
+  params["input_title"] = gets.chomp
+  print "Enter review body: "
+  params["input_body"] = gets.chomp
+  print "Enter location ID: "
+  params["input_id"] = gets.chomp
+
+  response = Unirest.post("http://localhost:3000/v1/reviews", parameters: params)
+  reviews = response.body
+
+elsif input_option == "5"
+  response = Unirest.get("http://localhost:3000/v1/reviews")
+  reviews = response.body
+  puts JSON.pretty_generate(reviews)
 end
