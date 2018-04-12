@@ -10,7 +10,7 @@
 #   first_name: "Samantha", 
 #   last_name: "Brinkley", 
 #   email: "sambrinkley@gmail.com", 
-#   password_digest: "password"
+#   password: "password"
 #   })
 # item.save
 
@@ -18,7 +18,23 @@
 #   first_name: "Shannon", 
 #   last_name: "Brinkley", 
 #   email: "brinkme@yahoo.com", 
-#   password_digest: "password"
+#   password: "password"
+#   })
+# item.save
+
+# item = User.new({
+#   first_name: "Dalton", 
+#   last_name: "Brinkley", 
+#   email: "dbrinkles@aol.com", 
+#   password: "password"
+#   })
+# item.save
+
+# item = User.new({
+#   first_name: "Lena", 
+#   last_name: "Brinkley", 
+#   email: "lbrinkley@yahoo.com", 
+#   password: "password"
 #   })
 # item.save
 
@@ -36,6 +52,14 @@
 #   hours: "5AM - 10PM", 
 #   phone_number: "773-880-5172", 
 #   website: "starbucks.com"})
+# location.save
+
+# location = Location.new({
+#   name: "Intelligentsia Coffee Broadway Coffeebar", 
+#   address: "3123 North Broadway, Chicago, IL 60657", 
+#   hours: "6AM - 8PM", 
+#   phone_number: "773-348-8058", 
+#   website: "https://www.intelligentsiacoffee.com/broadway-coffeebar"})
 # location.save
 
 # location = Location.new({
@@ -80,6 +104,11 @@
 
 # category = Category.new({
 #   name: "Cafe"
+#   })
+# category.save
+
+# category = Category.new({
+#   name: "Coffee Shop"
 #   })
 # category.save
 
