@@ -8,8 +8,9 @@ class V1::ReviewsController < ApplicationController
     review = Review.new(
       title: params["input_title"],
       body: params["input_body"],
-      user_id: current_user.id,
-      location_id: params["location_id"]
+      user_id: params["input_user_id"],
+      # user_id: current_user.id,
+      location_id: params["input_location_id"]
       )
     if review.save
       render json: review.as_json
