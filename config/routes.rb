@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     post "/users" => "users#create"
 
     get "/locations" => "locations#index"
+    get "/locations/:id" => "locations#show"
     post "/locations" => "locations#create"
 
     get "/reviews" => "reviews#index"
