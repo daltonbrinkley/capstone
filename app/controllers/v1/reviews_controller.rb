@@ -18,4 +18,11 @@ class V1::ReviewsController < ApplicationController
       render json: {errors: review.errors.full_messages}, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    review_id = params["id"]
+    review = review.find_by(id: review_id)
+    review.destroy
+    render json: {message: "Review successfully deleted!" }
+  end
 end

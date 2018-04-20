@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :v1 do
     post "/users" => "users#create"
+    delete "/users/:id" => "users#destroy"
 
     get "/locations" => "locations#index"
     get "/locations/:id" => "locations#show"
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
 
     get "/reviews" => "reviews#index"
     post "/reviews" => "reviews#create"
+    delete "/reviews/:id" => "reviews#destroy"
 
   end
 end
