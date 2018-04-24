@@ -1,184 +1,597 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>My App</title>
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.js"></script>
-  <script src="index.js" defer></script>
+    <meta charset="utf-8" />
+    <title>Percolate.</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="nileforest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 
-  <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicone Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="apple-touch-icon" href="img/favicon.png"> 
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- CSS -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="css/ionicons.css" rel="stylesheet" type="text/css" />
+    <link href="css/plugin/sidebar-menu.css" rel="stylesheet" type="text/css" />
+    <link href="css/plugin/animate.css" rel="stylesheet" type="text/css" />
+    <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.js"></script>
+    <script src="index.js" defer></script>
 </head>
 
 <body>
-  <div id="vue-app">
-    <a href="/#/locations">See all locations!</a>
-    <a href="/#/locations/new">Create a new location!</a>
-    <a href="/#/reviews/new">Create a new review!</a>
-    <a href="/#/signup">Signup</a>
-    <a href="/#/login">Login</a>
-    <a href="/#/logout">Logout</a>
 
-    <router-view></router-view>
+  <div id="vue-app">
+
+    <!-- Preloader -->
+    <section id="preloader">
+        <div class="loader" id="loader">
+            <div class="loader-img"></div>
+        </div>
+    </section>
+    <!-- End Preloader -->
+
+    <!-- Search Overlay Menu -->
+    <div class="search-overlay-menu">
+        <span class="search-overlay-close"><i class="ion ion-ios-close-empty"></i></span>
+        <form role="search" id="searchform" action="/search" method="get">
+            <input value="" name="q" type="search" placeholder="Search..." />
+            <button type="submit"><i class="ion ion-ios-search"></i></button>
+        </form>
+    </div>
+    <!-- End Search Overlay Menu -->
+
+    <!-- Sidemenu -->
+    <section id="pushmenu-right" class="pushmenu pushmenu-right side-menu">
+        <a id="menu-sidebar-close-icon" class="menu-close"><i class="ion ion-android-close"></i></a>
+        <h5 class="white">Login</h5>
+        <div class="sign-in">
+            <input class="input-sm form-full" type="email" aria-required="true" id="email" name="email" placeholder="Email" value="" />
+            <input class="input-sm form-full" type="password" aria-required="true" id="password" name="password" placeholder="Password" value="" />
+            <input type="submit" class="btn btn-md btn-color-b form-full" value="Login" v-on:click="submit()" />
+            <a href="/#/signup">New to Percolate?</a>
+        </div>
+        <ul>
+            <li><a href="service-1.html">Home</a></li>
+            <li><a href="/#/locations">Locations</a></li>
+            <li><a href="404-error-1.html">About</a></li>
+            <li><a href="shop-checkout.html">FAQ</a></li>
+            <li><a href="contact-1.html">Contact Us</a></li>
+        </ul>
+    </section>
+    <!--End Sidemenu -->
+
+    <!-- Site Wraper -->
+    <div class="wrapper">
+
+        <!-- Header -->
+        <header id="header" class="header">
+            <div class="container header-inner">
+
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html">
+                        <img class="logo-light" src="LightPercolateSansLogo.png" alt="Percolate" />
+                        <img class="logo-dark" src="PercolateSansLogo.png" alt="Percolate" />
+                    </a>
+                </div>
+                <!-- End Logo -->
+
+                <!-- Rightside Menu (Search, Cart, Bart icon) -->
+                <div class="side-menu-btn">
+                    <ul>
+                        <!-- Search Icon -->
+                        <li class="">
+                            <a class="search-overlay-menu-btn header-icon"><i class="fa fa-search"></i></a>
+                        </li>
+                        <!-- End Search Icon -->
+
+                        <!--Sidebar Menu Icon-->
+                        <li class="">
+                            <a id="menu-sidebar-list-icon" class="nav-bar-icon"><span></span></a>
+                        </li>
+                        <!-- End Sidebar Menu Icon-->
+                    </ul>
+                </div>
+                <!-- End Rightside Menu -->
+
+                <!-- Mobile Navbar Icon -->
+                <div class="nav-mobile nav-bar-icon">
+                    <span></span>
+                </div>
+                <!-- End Mobile Navbar Icon -->
+
+                <!-- Navbar Navigation -->
+                <div class="nav-menu">
+                    <ul class="nav-menu-inner">
+                        <li>
+                            <a class="menu-has-sub" href="/#/locations">Locations <i></i></a>
+                        </li>
+                        <li>
+                            <a class="menu-has-sub" href="/#/locations/new">Add a Location <i></i></a>
+                        </li>
+                        <li>
+                            <a class="menu-has-sub" href="/#/reviews/new">Leave a Review <i></i></a>
+                        </li>
+                        <li>
+                            <a class="menu-has-sub" href="/#/login">Login <i></i></a>
+                        </li>
+                        <li>
+                            <a class="menu-has-sub" href="/#/signup">Register <i></i></a>
+                        </li>
+                        <li>
+                            <a class="menu-has-sub" href="/#/logout">Logout <i></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Navbar Navigation -->
+            </div>
+        </header>
+        <!-- End Header -->
+
+         <router-view></router-view>
+
+        <!-- FOOTER -->
+        <footer class="footer pt-80">
+            <div class="container">
+                <div class="row mb-60">
+                    <!-- Logo -->
+                    <div class="col-md-3 col-sm-3 mb-xs-30">
+                        <a class="footer-logo" href="home.html">
+                            <img src="PercolateSansLogo.png" /></a>
+                    </div>
+                    <!-- Logo -->
+
+                    <!-- Newsletter -->
+                    <div class="col-md-4 col-sm-5 mb-xs-30">
+                        <div class="newsletter">
+                            <form>
+                                <input type="email" class="newsletter-input input-md newsletter-input mb-0" placeholder="Enter Your Email">
+                                <button class="newsletter-btn btn btn-xs btn-white" type="submit" value=""><i class="fa fa-angle-right mr-0"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- End Newsletter -->
+
+                    <!-- Social -->
+                    <div class="col-md-3 offset-md-2 col-sm-4">
+                        <ul class="social">
+                            <li><a target="_blank" href="https://twitter.com/dbrinkles"><i class="fa fa-twitter"></i></a></li>
+                            <li><a target="_blank" href="https://instagram.com/dbrinkles"><i class="fa fa-instagram"></i></a></li>
+                            <li><a target="_blank" href="https://www.facebook.com/dalton.brinkley.7?ref=bookmarks/"><i class="fa fa-facebook"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- End Social -->
+                </div>
+                <!--Footer Info -->
+                <div class="row footer-info mb-60">
+                    <div class="col-md-3 col-sm-12 mb-sm-30">
+                        <p class="mb-xs-0">Find your best study environment.</p>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-sm-30 mb-xs-0">
+                        <ul class="link">
+                            <li><a href="blog-grid-3col.html">Locations</a></li>
+                            <li><a href="portfolio-grid-3col.html">Add a Location</a></li>
+                            <li><a href="login-register.html">Leave a Review</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-sm-30">
+                        <ul class="link">
+                            <li><a href="/#/login">Login</a></li>
+                            <li><a href="/#/signup">Create a Profile</a></li>
+                            <li><a href="/#/logout"">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                        <p>The Loop - Chicago, IL</p>
+                        <ul class="link-small">
+                            <li><a href="mailto:dbrinkles@gmail.com"><i class="fa fa-envelope-o left"></i>Email Us</a></li>
+                            <li><a><i class="fa fa-phone left"></i>(248)719-5328</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Footer Info -->
+            </div>
+
+            <hr />
+
+            <!-- Copyright Bar -->
+            <section class="copyright ptb-60">
+                <div class="container">
+                    <p class="">
+                        © 1994 <a><b>Brinkley Productions</b></a>. All Rights Reserved.
+                        <br />
+                    </p>
+                </div>
+            </section>
+            <!-- End Copyright Bar -->
+
+        </footer>
+        <!-- END FOOTER -->
+
+        <!-- Scroll Top -->
+        <a class="scroll-top">
+            <i class="fa fa-angle-double-up"></i>
+        </a>
+        <!-- End Scroll Top -->
+
+    </div>
+    <!-- Site Wraper End -->
+
   </div>
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!-- JS -->
+
+    <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+
+    <script src="js/plugin/jquery.easing.js" type="text/javascript"></script>
+    <script src="js/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/plugin/jquery.flexslider.js" type="text/javascript"></script>
+    <script src="js/plugin/jquery.fitvids.js" type="text/javascript"></script>
+    <script src="js/plugin/jquery.viewportchecker.js" type="text/javascript"></script>
+    <script src="js/plugin/jquery.stellar.min.js" type="text/javascript"></script>
+    <script src="js/plugin/wow.min.js" type="text/javascript"></script>
+    <script src="js/plugin/jquery.colorbox-min.js" type="text/javascript"></script>
+    <script src="js/plugin/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="js/plugin/isotope.pkgd.min.js" type="text/javascript"></script>
+    <script src="js/plugin/masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="js/plugin/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <script src="js/plugin/sidebar-menu.js" type="text/javascript"></script>
+    <script src="js/plugin/jquery.fs.tipper.min.js" type="text/javascript"></script>
+    <script src="js/plugin/mediaelement-and-player.min.js"></script>
+    <script src="js/theme.js" type="text/javascript"></script>
+    <script src="js/navigation.js" type="text/javascript"></script>
+    <script src="js/plugin/TweenLite.min.js" type="text/javascript"></script>
+    <script src="js/plugin/EasePack.min.js" type="text/javascript"></script>
+    <script src="js/plugin/pollyfill.js" type="text/javascript" defer></script>
+
+<!--     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script> -->
 
 </body>
+
 </html>
 
 <template id="home-page">
   <div class="vue-component">
+    <!-- Intro Section -->
+    <section id="intro" class="dark-bg">
 
-    <h1>{{ message }}</h1>
+        <!-- Intro Canvas Pattern -->
+        <div class="intro-media-wraper bg-image overlay-dark parallax parallax-section1" data-background-img="background.jpg">
+            <!-- Canvas Pattern -->
+            <canvas id="pollyfill-canvas"></canvas>
+            <!-- End Canvas Pattern -->
+        </div>
+        <!-- End Intro Canvas Pattern -->
+
+        <!-- Caption Section -->
+        <div class="intro-overlay-section">
+            <div class="js-fullscreen-height intro-caption-top container">
+                <div class="intro-content">
+                    <div class="intro-content-inner">
+                        <h5>Find your new study spot</h5>
+                        <br>
+                        <h1 class="h1">Percolate.</h1>
+                        <br>
+                        <div><a class="btn btn-md btn-white-line xs-hidden">Read More</a><span class="btn-space-10 xs-hidden"></span><a class="btn btn-md btn-white">Learn More</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Caption Section -->
+    </section>
+    <!-- End Intro Section -->
+
+    <div class="clearfix"></div>
+
+    <!--About Section-->
+    <section id="about" class="wow fadeIn ptb ptb-sm-80">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-8 offset-md-2">
+                    <h3 class="h4">About Percolate</h3>
+                    <div class="spacer-15"></div>
+                    <p class="lead">Find the study spot that's best for you. <a class="tipped" data-title="Sample Text" data-tipper-options='{"direction":"top"}'><b>Everyone is different.</b></a> People excel in environments where they feel comfortable. Read what others have to say about local places to get work done, and find your fit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Section-->
+    <hr />
+
+    <!-- Blog Section -->
+    <!-- <section id="blog" class="wow fadeIn ptb ptb-sm-80">
+        <div class="container">
+            <h3 class="float-left float-none-xs">Latest Reviews</h3>
+            <a class="btn-link-a float-right float-none-xs">View All</a>
+            <div class="clearfix"></div>
+            <div class="spacer-60"></div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6 mb-sm-30">
+                    <div class="blog-post">
+                        <div class="post-media">
+                            <img class="item-container" src="coffee.jpg" alt="" />
+                        </div>
+                        <div class="post-meta"><span><a>{{reviews[0].title}}</a>,</span> <span>Jan 29, 2015</span></div>
+                        <div class="post-header">
+                            <h5><a href="">{{reviews[0].location}}</a></h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-6 mb-sm-30">
+                    <div class="blog-post">
+                        <div class="post-media">
+                            <img class="item-container" src="coffee.jpg" alt="" />
+                        </div>
+                        <div class="post-meta"><span><a>{{reviews[1].title}}</a>,</span> <span>Jan 29, 2015</span></div>
+                        <div class="post-header">
+                            <h5><a href="">{{reviews[1].location}}</a></h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-6 mb-sm-30">
+                    <div class="blog-post">
+                        <div class="post-media">
+                            <img class="item-container" src="coffee.jpg" alt="" />
+                        </div>
+                        <div class="post-meta"><span><a>{{reviews[2].title}}</a>,</span> <span>Jan 29, 2015</span></div>
+                        <div class="post-header">
+                            <h5><a href="">{{reviews[2].location}}</a></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- End Blog Section -->
 
   </div>
 </template>
 
 <template id="locations-page">
-  <div class="vue-component container">
-    <div> <h1> {{ message }} </h1>
-      <div class="row locations-row">
-        <div v-for="location in locations" class="col-md-4">
-          <div class="card mb-5 bg-light border-dark">
-            <!-- <img class="card-img-top" v-bind:src="location.image" alt="Card image cap"> -->
-            <div class="card-body">
-              <h4 class="card-title">{{ location.name }}</h4>
-              <p class="card-text address">{{ location.address }}</p>
-              <p class="card-text hours">{{ location.hours }}</p>
-              <p class="card-text phone number">{{ location.phone_number }}</p>
-              <a v-bind:href=location.website class="btn btn-primary">Location Website</a>
+  <div class="vue-component">
+  <!-- Intro Section -->
+        <section class="inner-intro dark-bg bg-image overlay-dark parallax parallax-background1" data-background-img="location_header.jpg">
+            <div class="container">
+                <div class="row title">
+                    <h2 class="h2">Locations</h2>
+                    <div class="page-breadcrumb">
+                        <a>Home</a>/<a>All Locations</a>
+                    </div>
+                </div>
             </div>
-          </div>
+        </section>
+        <!-- End Intro Section -->
+        
+        <!-- Blog Post Section -->
+        <section class="ptb ptb-sm-80">
+            <div class="container">
+                <!-- Post Item -->
+                <div class="row container-grid">
+                    <div v-for="location in locations" class="col-md-4 col-sm-6 nf-item spacing-grid">
+                        <div class="blog-post">
+                            <div class="post-media">
+                                <img class="item-container" src="location_default.jpg" alt="1" />
+                            </div>
+                            <div class="post-header">
+                                <h5><a href="blog-single-image-post.html">{{ location.name }}</a></h5>
+                            </div>
+                            <div class="post-entry">
+                                <p>{{ location.address }}</p>
+                            </div>
+                            <div class="post-entry">
+                                <p>{{ location.hours }} // {{ location.phone_number }}</p>
+                            </div>
+                            <div class="post-tag pull-left"><span><a>Branding</a>,</span><span><a>Design</a></span></div>
+                            <div class="post-more-link pull-right"><a href="blog-single-image-post.html">Read More<i class="fa fa-long-arrow-right right"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Post Item -->
+            </div>
+        </section>
+        <!-- End Blog Post Section -->
+  </div>
+</template>
+
+<template id="locations-new-page">
+  <div class="vue-component">
+    <!-- Intro Section -->
+    <section class="inner-intro dark-bg bg-image overlay-dark parallax parallax-background1" data-background-img="home_background.jpg">
+        <div class="container">
+            <div class="row title">
+                <h2 class="h2">Add a Location</h2>
+                <div class="page-breadcrumb">
+                    <a>Home</a>/<a>New Location</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Intro Section -->
+    <div class="container">
+      <div class="mtb-60">
+        <h4>Add a Location</h4>
+        <div class="row mt-30">
+            <form class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" class="input-lg form-full" value="" placeholder="Location Name" v-model="name" required />
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" class="input-lg form-full" value="" placeholder="Address (Example: 2850 N Clark St, Chicago, IL 60657)" v-model="address" required />
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" class="input-lg form-full" value="" placeholder="Hours (Example: 11AM - 9PM)" v-model="hours" required />
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" class="input-lg form-full" value="" placeholder="Phone Number (Example: XXX-XXX-XXXX)" v-model="phone_number" required />
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" class="input-lg form-full" value="" placeholder="Website" v-model="website" required />
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn btn-lg btn-black" v-on:click="submit()">Add Location!</button>
+                    </div>
+                </div>
+            </form>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<template id="locations-new-page">
+<template id="reviews-new-page">
   <div class="vue-component">
+    <!-- Intro Section -->
+    <section class="inner-intro dark-bg bg-image overlay-dark parallax parallax-background1" data-background-img="home_background.jpg">
+        <div class="container">
+            <div class="row title">
+                <h2 class="h2">Leave a Review</h2>
+                <div class="page-breadcrumb">
+                    <a>Home</a>/<a>Review</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Intro Section -->
     <div class="container">
-      <h1>New Location</h1>
-      <ul>
-        <li class="text-danger" v-for="error in errors">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>Name:</label>
-        <input type="text" class="form-control" v-model="name">
+      <div class="mtb-60">
+        <h4>Leave a Review</h4>
+        <div class="row mt-30">
+            <form class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" class="input-lg form-full" value="" placeholder="Review Title" v-model="title" required />
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="input-lg form-full" value="" placeholder="Location ID" v-model="location_id" required />
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="input-lg form-full" value="" placeholder="User ID" v-model="user_id" required />
+                    </div>
+                    <div class="col-md-12">
+                        <textarea placeholder="Review Body" class="form-full" v-model="body" required></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn btn-lg btn-black" v-on:click="submit()">Post</button>
+                    </div>
+                </div>
+            </form>
+        </div>
       </div>
-      <div class="form-group">
-        <label>Address:</label>
-        <input type="text" class="form-control" v-model="address">
-      </div>
-      <div class="form-group">
-        <label>Hours:</label>
-        <input type="text" class="form-control" v-model="hours">
-      </div>
-      <div class="form-group">
-        <label>Phone Number:</label>
-        <input type="text" class="form-control" v-model="phone_number">
-      </div>
-      <div class="form-group">
-        <label>Website:</label>
-        <input type="text" class="form-control" v-model="website">
-      </div>
-      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
     </div>
   </div>
 </template>
 
-<template id="reviews-new-page">
+<template id="login-page">
   <div class="vue-component">
+    <!-- Intro Section -->
+    <section class="inner-intro dark-bg bg-image overlay-dark parallax parallax-background1" data-background-img="home_background.jpg">
+        <div class="container">
+            <div class="row title">
+                <h2 class="h2">Login</h2>
+                <div class="page-breadcrumb">
+                    <a>Home</a>/<a>Login</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Intro Section -->
     <div class="container">
-      <h1>New Review</h1>
-      <ul>
-        <li class="text-danger" v-for="error in errors">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>Review Title:</label>
-        <input type="text" class="form-control" v-model="title">
-      </div>
-      <div class="form-group">
-        <label>Review Body:</label>
-        <input type="text" class="form-control" v-model="body">
-      </div>
-      <div class="form-group">
-        <label>User ID:</label>
-        <input type="text" class="form-control" v-model="user_id">
-      </div>
-      <div class="form-group">
-        <label>Location ID:</label>
-        <input type="text" class="form-control" v-model="location_id">
-      </div>
-      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
+      <div class="mtb-60">
+        <h4>Login to your Percolate account:</h4>
+        <div class="sign-in">
+            <input class="input-sm form-full" type="email" aria-required="true" placeholder="Email" value="" v-model="email" />
+            <input class="input-sm form-full" type="password" aria-required="true" placeholder="Password" value="" v-model="password" />
+            <input type="submit" class="btn btn-md btn-color-b form-full" value="Login" v-on:click="submit()"/>
+            <a href="/#/signup">New to Percolate?</a>
+        </div>
     </div>
   </div>
 </template>
 
 <template id="signup-page">
   <div class="vue-component">
-
-    <div class="container">
-      <h1>Signup</h1>
-      <ul>
-        <li class="text-danger" v-for="error in errors">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>First Name:</label> 
-        <input type="text" class="form-control" v-model="first_name">
-      </div>
-      <div class="form-group">
-        <label>Last Name:</label>
-        <input type="email" class="form-control" v-model="last_name">
-      </div>
-      <div class="form-group">
-        <label>Email Address:</label>
-        <input type="email" class="form-control" v-model="email">
-      </div>
-      <div class="form-group">
-        <label>Password:</label>
-        <input type="password" class="form-control" v-model="password">
-      </div>
-      <div class="form-group">
-        <label>Password confirmation:</label>
-        <input type="password" class="form-control" v-model="passwordConfirmation">
-      </div>
-      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
-    </div>
-
+    <!-- Intro Section -->
+    <section class="inner-intro dark-bg bg-image overlay-dark parallax parallax-background1" data-background-img="home_background.jpg">
+        <div class="container">
+            <div class="row title">
+                <h2 class="h2">Register</h2>
+                <div class="page-breadcrumb">
+                    <a>Home</a>/<span>Register</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Intro Section -->
+        
+    <!-- Login Section -->
+    <section id="login-register" class="ptb ptb-sm-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2">
+                    <div class="border-box">
+                        <h4>Create an Account</h4>
+                        <form>
+                            <div class="form-field-wrapper">
+                                <label for="login-email">First Name</label>
+                                <input type="text" required="" placeholder="Enter your First Name" class="input-sm form-full" v-model="first_name" aria-required="true">
+                            </div>
+                            <div class="form-field-wrapper">
+                                <label for="login-email">Last Name</label>
+                                <input type="text" required="" placeholder="Enter your Last Name" class="input-sm form-full" v-model="last_name" aria-required="true">
+                            </div>
+                            <div class="form-field-wrapper">
+                                <label for="signup-email">Email address</label>
+                                <input type="email" required="" placeholder="Enter your Email" class="input-sm form-full" v-model="email" aria-required="true">
+                            </div>
+                            <div class="form-field-wrapper">
+                                <label for="signup-pass">Choose Password</label>
+                                <input type="password" required="" placeholder="Enter Password" class="input-sm form-full" v-model="password" aria-required="true">
+                            </div>
+                            <div class="form-field-wrapper">
+                                <label for="signup-pass">Re-enter Password</label>
+                                <input type="password" required="" placeholder="Enter Re-enter Password" class="input-sm form-full" v-model="passwordConfirmation" aria-required="true">
+                            </div>
+                            <button name="submit" id="form-submit" type="submit" v-on:click="submit()" class="btn btn-md btn-black">Signup Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Login Section -->
   </div>
 </template>
 
-<template id="login-page">
+<template id="logout-page">
   <div class="vue-component">
-
-    <div class="container">
-      <h1>Login</h1>
-      <ul>
-        <li class="text-danger" v-for="error in errors">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>Email Address:</label>
-        <input type="email" class="form-control" v-model="email">
-      </div>
-      <div class="form-group">
-        <label>Password:</label>
-        <input type="password" class="form-control" v-model="password">
-      </div>
-      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
-    </div>
-
+    <!-- Intro Section -->
+    <section class="inner-intro dark-bg bg-image overlay-dark parallax parallax-background1" data-background-img="home_background.jpg">
+        <div class="container">
+            <div class="row title">
+                <h2 class="h2">You have been successfully logged out!</h2>
+                <div class="page-breadcrumb">
+                    <a>Home</a>/<span>Logout</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Intro Section -->
   </div>
 </template>
