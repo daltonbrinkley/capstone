@@ -16,7 +16,11 @@ var HomePage = {
     );
   },
   methods: {},
-  computed: {}
+  computed: {
+    topReviews: function() {
+      return this.reviews.slice(0, 3);
+    }
+  }
 };
 
 var LocationsPage = {
@@ -204,6 +208,11 @@ var app = new Vue({
     var jwt = localStorage.getItem("jwt");
     if (jwt) {
       axios.defaults.headers.common["Authorization"] = jwt;
+    }
+  },
+  watch: {
+    '$route': function() {
+      window.location.reload();
     }
   }
 });
