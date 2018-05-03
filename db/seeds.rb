@@ -70,6 +70,54 @@
 #   website: "http://5411empanadas.com/"})
 # location.save
 
+location = Location.new({
+  name: "Dollop Coffee Co.", 
+  address: "643 N Wells St, Chicago, IL 60654", 
+  hours: "7AM - 10PM", 
+  phone_number: "312-846-6670", 
+  website: "https://www.dollopcoffee.com/"})
+location.save
+
+location = Location.new({
+  name: "Café Integral at Freehand Chicago", 
+  address: "19 E Ohio St, Chicago, IL 60611", 
+  hours: "7AM - 5PM", 
+  phone_number: "312-940-3699", 
+  website: "https://freehandhotels.com/chicago/cafe-integral/"})
+location.save
+
+location = Location.new({
+  name: "Sawada Coffee", 
+  address: "112 N Green St, Chicago, IL 60607", 
+  hours: "8AM - 5PM", 
+  phone_number: "312-754-0431", 
+  website: "http://sawadacoffee.com/"})
+location.save
+
+location = Location.new({
+  name: "HERO Coffee Bar", 
+  address: "439 S Dearborn St, Chicago, IL 60605", 
+  hours: "7AM - 7PM", 
+  phone_number: "312-631-3269", 
+  website: "https://www.hero-coffee.com/"})
+location.save
+
+location = Location.new({
+  name: "The Wormhole Coffee", 
+  address: "1462 N Milwaukee Ave, Chicago, IL 60622", 
+  hours: "7AM - 9PM", 
+  phone_number: "773-661-2468", 
+  website: "http://www.thewormhole.us/"})
+location.save
+
+location = Location.new({
+  name: "Lavazza Kafenio", 
+  address: "162 E Ohio St, Chicago, IL 60611", 
+  hours: "6AM - 6PM", 
+  phone_number: "312-255-8850", 
+  website: "http://www.kafeniochicago.com/"})
+location.save
+
 # review = Review.new({
 # title: "Busy corner Starbucks!", 
 # body: "I come here all the time because it is right down the block from my apartment - good go-to coffee shop, but it is always busy and noisy because of the location.", 
@@ -151,30 +199,37 @@
 #   })
 # location_category.save
 
-image = Image.new({
-  title: "5411 Empanadas", 
-  url: "https://chicago.seriouseats.com/images/2012/07/20120725-215886-we-chat-with-nicolas-ibarzabel-5411-empanadas-side.jpg", 
-  location_id: 3
-  })
-image.save
+# image = Image.new({
+#   title: "5411 Empanadas", 
+#   url: "https://chicago.seriouseats.com/images/2012/07/20120725-215886-we-chat-with-nicolas-ibarzabel-5411-empanadas-side.jpg", 
+#   location_id: 3
+#   })
+# image.save
 
-image = Image.new({
-  title: "Starbucks", 
-  url: "https://www.brainerddispatch.com/sites/default/files/styles/16x9_620/public/fieldimages/1/0124/starbucks.jpg?itok=_AOJzIHe", 
-  location_id: 1
-  })
-image.save
+# image = Image.new({
+#   title: "Starbucks", 
+#   url: "https://www.brainerddispatch.com/sites/default/files/styles/16x9_620/public/fieldimages/1/0124/starbucks.jpg?itok=_AOJzIHe", 
+#   location_id: 1
+#   })
+# image.save
 
-image = Image.new({
-  title: "Intelligentsia", 
-  url: "http://www.sleepgoodnight.com/wp-content/uploads/2017/05/coffee-espresso.jpg", 
-  location_id: 4
-  })
-image.save
+# image = Image.new({
+#   title: "Intelligentsia", 
+#   url: "http://www.sleepgoodnight.com/wp-content/uploads/2017/05/coffee-espresso.jpg", 
+#   location_id: 4
+#   })
+# image.save
 
-image = Image.new({
-  title: "Next Door Cafe", 
-  url: "http://nelarusky.com/wp-content/uploads/2012/07/NextDoor.jpg", 
-  location_id: 2
-  })
-image.save
+# image = Image.new({
+#   title: "Next Door Cafe", 
+#   url: "http://nelarusky.com/wp-content/uploads/2012/07/NextDoor.jpg", 
+#   location_id: 2
+#   })
+# image.save
+
+# image = Image.new({
+#   title: "Next Door Cafe", 
+#   url: "http://nelarusky.com/wp-content/uploads/2012/07/NextDoor.jpg", 
+#   location_id: 2
+#   })
+# image.save
