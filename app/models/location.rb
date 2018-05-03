@@ -12,6 +12,7 @@ class Location < ApplicationRecord
       hours: hours, 
       phone_number: phone_number,
       website: website,
+      image: images[0] ? images[0].url : "no image",
       categories: categories.map {|category| category.name}
     }
   end

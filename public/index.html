@@ -362,7 +362,7 @@
                     <div v-for="location in locations" class="col-md-4 col-sm-6 nf-item spacing-grid">
                         <div class="blog-post">
                             <div class="post-media">
-                                <img class="item-container" src="location_default.jpg" alt="1" />
+                                <img class="item-container" v-bind:src="location.image" alt="1" />
                             </div>
                             <div class="post-header">
                                 <h5><a href="blog-single-image-post.html">{{ location.name }}</a></h5>
@@ -477,7 +477,7 @@
 <template id="login-page">
   <div class="vue-component">
     <!-- Intro Section -->
-    <section class="inner-intro dark-bg bg-image overlay-dark parallax parallax-background1" data-background-img="home_background.jpg">
+    <section class="inner-intro dark-bg bg-image overlay-dark parallax parallax-background1" data-background-img="login.jpg">
         <div class="container">
             <div class="row title">
                 <h2 class="h2">Login</h2>
@@ -504,7 +504,7 @@
 <template id="signup-page">
   <div class="vue-component">
     <!-- Intro Section -->
-    <section class="inner-intro dark-bg bg-image overlay-dark parallax parallax-background1" data-background-img="home_background.jpg">
+    <section class="inner-intro dark-bg bg-image overlay-dark parallax parallax-background1" data-background-img="register.jpg">
         <div class="container">
             <div class="row title">
                 <h2 class="h2">Register</h2>
