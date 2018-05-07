@@ -118,13 +118,13 @@
 #   website: "http://www.kafeniochicago.com/"})
 # location.save
 
-# location = Location.new({
-#   name: "Stan's Donuts - Diversey & Clark", 
-#   address: "2800 N Clark St, Chicago, IL 60657", 
-#   hours: "6AM - 9PM", 
-#   phone_number: "773-868-0173", 
-#   website: "http://www.stansdonutschicago.com/"})
-# location.save
+location = Location.new({
+  name: "Stan's Donuts - Diversey & Clark", 
+  address: "2800 N Clark St, Chicago, IL 60657", 
+  hours: "6AM - 9PM", 
+  phone_number: "773-868-0173", 
+  website: "http://www.stansdonutschicago.com/"})
+location.save
 
 # review = Review.new({
 # title: "Busy corner Starbucks!", 
