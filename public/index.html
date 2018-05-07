@@ -365,7 +365,7 @@
                                 <img class="item-container" v-bind:src="location.image" alt="1" />
                             </div>
                             <div class="post-header">
-                                <h5><a href="blog-single-image-post.html">{{ location.name }}</a></h5>
+                                <h5><a a v-bind:href=" '/#/locations/' + location.id ">{{ location.name }}</a></h5>
                             </div>
                             <div class="post-entry">
                                 <p>{{ location.address }}</p>
@@ -569,6 +569,53 @@
         </div>
     </section>
     <!-- End Intro Section -->
+  </div>
+</template>
+
+<template id="location-show-page">
+  <div class="vue-component">
+  <!-- Intro Section -->
+        <section class="inner-intro dark-bg bg-image overlay-dark parallax parallax-background1" data-background-img="locations_page.jpg">
+            <div class="container">
+                <div class="row title">
+                    <h2 class="h2">{{ location.name }}</h2>
+                    <div class="page-breadcrumb">
+                        <a>Locations</a>/<a>Single Location</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Intro Section -->
+
+        <!-- Blog Post Section -->
+        <section class="ptb ptb-sm-80">
+            <div class="container">
+                <div class="row">
+                    <!-- Post Bar -->
+                    <div class="col-lg-9 col-md-9 blog-post-hr">
+                        <div class="blog-post mb-30">
+
+                            <div class="post-header">
+                                <h2>{{ location.name }}</h2>
+                            </div>
+
+                            <div class="post-media">
+                                <img alt="" src="img/full/28.jpg">
+                            </div>
+                        </div>
+
+                        <hr />
+                        
+                    </div>
+                    <!-- End Post Bar -->
+                </div>
+            </div>
+        </section>
+
+<!--         <h1>{{ location.name }}</h1>
+        <p>{{ location.hours }}</p>
+        <p>{{ location.address }}</p>  -->
+    
   </div>
 </template>
 

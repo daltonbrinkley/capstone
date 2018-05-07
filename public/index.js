@@ -187,6 +187,36 @@ var LogoutPage = {
   }
 };
 
+var LocationsShowPage = {
+  template: "#location-show-page",
+  data: function() {
+    return {
+      location: {
+        name: "Location name goes here",
+        address: "Location address goes here",
+        hours: "Location hours go here",
+        phone_number: "Phone Number goes here",
+        website: "Website goes here"
+      }
+    };
+  },
+  created: function() {
+    console.log("what is this weird $route thing", this.$route);
+    axios.get("v1/locations/" + this.$route.params.id).then(
+      function(response) {
+        this.location = response.data;
+      }.bind(this)
+    );
+    axios.get("v1/reviews").then(function(response) { 
+      this.reviews = response.data;
+      console.log(this.reviews);
+    }.bind(this)
+    );
+  },
+  methods: {},
+  computed: {}
+};
+
 var router = new VueRouter({
   routes: [{ path: "/", component: HomePage },
     { path: "/locations", component: LocationsPage},
@@ -195,6 +225,7 @@ var router = new VueRouter({
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
     { path: "/logout", component: LogoutPage },
+    { path: "/locations/:id", component: LocationsShowPage}
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };

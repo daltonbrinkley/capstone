@@ -118,13 +118,13 @@
 #   website: "http://www.kafeniochicago.com/"})
 # location.save
 
-location = Location.new({
-  name: "Stan's Donuts - Diversey & Clark", 
-  address: "2800 N Clark St, Chicago, IL 60657", 
-  hours: "6AM - 9PM", 
-  phone_number: "773-868-0173", 
-  website: "http://www.stansdonutschicago.com/"})
-location.save
+# location = Location.new({
+#   name: "Stan's Donuts - Diversey & Clark", 
+#   address: "2800 N Clark St, Chicago, IL 60657", 
+#   hours: "6AM - 9PM", 
+#   phone_number: "773-868-0173", 
+#   website: "http://www.stansdonutschicago.com/"})
+# location.save
 
 # review = Review.new({
 # title: "Busy corner Starbucks!", 
@@ -270,16 +270,16 @@ location.save
 #   })
 # image.save
 
-image = Image.new({
-  title: "Lavazza Kafenio", 
-  url: "https://www.garraways.co.uk/media/wysiwyg/garraways/categories/brands/lavazza/lavazza-coffee-at-garraways.jpg", 
-  location_id: 10
-  })
-image.save
+# image = Image.new({
+#   title: "Lavazza Kafenio", 
+#   url: "https://www.garraways.co.uk/media/wysiwyg/garraways/categories/brands/lavazza/lavazza-coffee-at-garraways.jpg", 
+#   location_id: 10
+#   })
+# image.save
 
-image = Image.new({
-  title: "The Wormhole Coffee", 
-  url: "http://www.thewormhole.us/wp-content/uploads/2013/11/DSC_0565-670x448.jpg", 
-  location_id: 9
-  })
-image.save
+# image = Image.new({
+#   title: "The Wormhole Coffee", 
+#   url: "http://www.thewormhole.us/wp-content/uploads/2013/11/DSC_0565-670x448.jpg", 
+#   location_id: 9
+#   })
+# image.save
