@@ -235,26 +235,12 @@ location.save
 #   })
 # image.save
 
-image = Image.new({
-  title: "Lavazza Kafenio", 
-  url: "https://www.garraways.co.uk/media/wysiwyg/garraways/categories/brands/lavazza/lavazza-coffee-at-garraways.jpg", 
-  location_id: 13
-  })
-image.save
-
-image = Image.new({
-  title: "The Wormhole Coffee", 
-  url: "http://www.thewormhole.us/wp-content/uploads/2013/11/DSC_0565-670x448.jpg", 
-  location_id: 12
-  })
-image.save
-
-image = Image.new({
-  title: "HERO Coffee Bar", 
-  url: "https://media.timeout.com/images/102540204/630/472/image.jpg", 
-  location_id: 11
-  })
-image.save
+# image = Image.new({
+#   title: "HERO Coffee Bar", 
+#   url: "https://media.timeout.com/images/102540204/630/472/image.jpg", 
+#   location_id: 11
+#   })
+# image.save
 
 # image = Image.new({
 #   title: "Sawada Coffee", 
@@ -277,10 +263,23 @@ image.save
 #   })
 # image.save
 
+# image = Image.new({
+#   title: "Stan's Donuts", 
+#   url: "https://static1.squarespace.com/static/59de6cc1bce1765a0a712259/5a04b8cae2c48354c3696f69/5a04c56f652deab388a855db/1510531988529/Stan%E2%80%99s+Donuts+%26+Coffee1.jpg?format=1500w", 
+#   location_id: 5
+#   })
+# image.save
 
 image = Image.new({
-  title: "Stan's Donuts", 
-  url: "https://static1.squarespace.com/static/59de6cc1bce1765a0a712259/5a04b8cae2c48354c3696f69/5a04c56f652deab388a855db/1510531988529/Stan%E2%80%99s+Donuts+%26+Coffee1.jpg?format=1500w", 
-  location_id: 5
+  title: "Lavazza Kafenio", 
+  url: "https://www.garraways.co.uk/media/wysiwyg/garraways/categories/brands/lavazza/lavazza-coffee-at-garraways.jpg", 
+  location_id: 10
+  })
+image.save
+
+image = Image.new({
+  title: "The Wormhole Coffee", 
+  url: "http://www.thewormhole.us/wp-content/uploads/2013/11/DSC_0565-670x448.jpg", 
+  location_id: 9
   })
 image.save
