@@ -256,26 +256,26 @@ image = Image.new({
   })
 image.save
 
-image = Image.new({
-  title: "Sawada Coffee", 
-  url: "https://elatlboy.files.wordpress.com/2018/04/sawada-coffee-chicago-008.jpg", 
-  location_id: 10
-  })
-image.save
+# image = Image.new({
+#   title: "Sawada Coffee", 
+#   url: "https://elatlboy.files.wordpress.com/2018/04/sawada-coffee-chicago-008.jpg", 
+#   location_id: 10
+#   })
+# image.save
 
-image = Image.new({
-  title: "Café Integral at Freehand Chicago", 
-  url: "http://ccd.hwstatic.com/propertyimages/9/91255/79.jpg", 
-  location_id: 9
-  })
-image.save
+# image = Image.new({
+#   title: "Café Integral at Freehand Chicago", 
+#   url: "http://ccd.hwstatic.com/propertyimages/9/91255/79.jpg", 
+#   location_id: 9
+#   })
+# image.save
 
-image = Image.new({
-  title: "Dollop Coffee Co.", 
-  url: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/f95a3c18466125.562c9ecc25eeb.jpg", 
-  location_id: 8
-  })
-image.save
+# image = Image.new({
+#   title: "Dollop Coffee Co.", 
+#   url: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/f95a3c18466125.562c9ecc25eeb.jpg", 
+#   location_id: 8
+#   })
+# image.save
 
 
 image = Image.new({
