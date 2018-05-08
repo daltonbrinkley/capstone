@@ -325,10 +325,10 @@
                         <div class="post-media">
                             <img class="item-container" v-bind:src="review.location.image" alt="" />
                         </div>
-                        <div class="post-meta"><span><a>{{review.title}}</a>,</span> <span>Jan 29, 2015</span></div>
                         <div class="post-header">
-                            <h5><a href="">{{ review.location.name }}</a></h5>
+                            <h5><a v-bind:href=" '/#/locations/' + review.location.id ">{{ review.location.name }}</a></h5>
                         </div>
+                        <div class="post-meta"><span><a>{{review.title}}</a>,</span></div>
                     </div>
                 </div>
             </div>
@@ -365,7 +365,7 @@
                                 <img class="item-container" v-bind:src="location.image" alt="1" />
                             </div>
                             <div class="post-header">
-                                <h5><a a v-bind:href=" '/#/locations/' + location.id ">{{ location.name }}</a></h5>
+                                <h5><a v-bind:href=" '/#/locations/' + location.id ">{{ location.name }}</a></h5>
                             </div>
                             <div class="post-entry">
                                 <p>{{ location.address }}</p>
