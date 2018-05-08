@@ -616,7 +616,7 @@
                                 <div class="">
                                     <div class="comment-detail">
                                         <h6>{{ review.title }}</h6>
-                                        <div class="post-meta"><span> USER // DATE </span></div>
+                                        <div class="post-meta"><span> Written by {{ review.user.first_name + " " + review.user.last_name }}</span></div>
                                         <p>{{ review.body }}</p>
                                     </div>
                                 </div>
