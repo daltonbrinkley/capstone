@@ -191,13 +191,19 @@ var LocationsShowPage = {
   template: "#location-show-page",
   data: function() {
     return {
-      location: {
-        name: "Location name goes here",
-        address: "Location address goes here",
-        hours: "Location hours go here",
-        phone_number: "Phone Number goes here",
-        website: "Website goes here"
-      }
+      location: [],
+      title: "",
+      body: "",
+      user_id: "",
+      location_id: "",
+      errors: []
+      // location: {
+      //   name: "Location name goes here",
+      //   address: "Location address goes here",
+      //   hours: "Location hours go here",
+      //   phone_number: "Phone Number goes here",
+      //   website: "Website goes here"
+      // }
     };
   },
   created: function() {
@@ -205,15 +211,30 @@ var LocationsShowPage = {
     axios.get("v1/locations/" + this.$route.params.id).then(
       function(response) {
         this.location = response.data;
+        console.log(this.location);
       }.bind(this)
     );
-    axios.get("v1/reviews").then(function(response) { 
-      this.reviews = response.data;
-      console.log(this.reviews);
-    }.bind(this)
-    );
   },
-  methods: {},
+  methods: {
+    submit: function() {
+      var params = {
+        input_title: this.title,
+        input_body: this.body,
+        input_user_id: this.user_id,
+        input_location_id: this.location_id
+      };
+      axios
+        .post("/v1/reviews", params)
+        .then(function(response) {
+          router.push("/");
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
+    }
+  },
   computed: {}
 };
 

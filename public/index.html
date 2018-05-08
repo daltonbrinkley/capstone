@@ -574,48 +574,87 @@
 
 <template id="location-show-page">
   <div class="vue-component">
-  <!-- Intro Section -->
-        <section class="inner-intro dark-bg bg-image overlay-dark parallax parallax-background1" data-background-img="locations_page.jpg">
-            <div class="container">
-                <div class="row title">
-                    <h2 class="h2">{{ location.name }}</h2>
-                    <div class="page-breadcrumb">
-                        <a>Locations</a>/<a>Single Location</a>
-                    </div>
+    <!-- Intro Section -->
+    <section class="inner-intro dark-bg bg-image overlay-dark parallax parallax-background1" data-background-img="locations_page.jpg">
+        <div class="container">
+            <div class="row title">
+                <h2 class="h2">{{ location.name }}</h2>
+                <div class="page-breadcrumb">
+                    <a>Locations</a>/<a>{{ location.name }}</a>
                 </div>
             </div>
-        </section>
-        <!-- End Intro Section -->
+        </div>
+    </section>
+    <!-- End Intro Section -->
 
-        <!-- Blog Post Section -->
-        <section class="ptb ptb-sm-80">
-            <div class="container">
-                <div class="row">
-                    <!-- Post Bar -->
-                    <div class="col-lg-9 col-md-9 blog-post-hr">
-                        <div class="blog-post mb-30">
+    <!-- Blog Post Section -->
+    <section class="ptb ptb-sm-80">
+        <div class="container">
+            <div class="row">
+                <!-- Post Bar -->
+                <div class="col-lg-9 col-md-9 blog-post-hr">
+                    <div class="blog-post mb-30">
 
-                            <div class="post-header">
-                                <h2>{{ location.name }}</h2>
-                            </div>
-
-                            <div class="post-media">
-                                <img alt="" src="img/full/28.jpg">
-                            </div>
+                        <div class="post-header">
+                            <h2>{{ location.name }}</h2>
                         </div>
 
-                        <hr />
-                        
+                        <div class="post-media">
+                            <img alt="" v-bind:src="location.image">
+                        </div>
                     </div>
-                    <!-- End Post Bar -->
-                </div>
-            </div>
-        </section>
 
-<!--         <h1>{{ location.name }}</h1>
-        <p>{{ location.hours }}</p>
-        <p>{{ location.address }}</p>  -->
-    
+                    <hr />
+
+                    <div class="post-comment mtb-30">
+                        <h4>Reviews</h4>
+                        <ul class="comment-list mt-30" v-for="review in location.reviews">
+                            <li>
+                                <div class="comment-avatar">
+                                    <img src="img/user-av.jpg">
+                                </div>
+                                <div class="">
+                                    <div class="comment-detail">
+                                        <h6>{{ review.title }}</h6>
+                                        <div class="post-meta"><span> USER // DATE </span></div>
+                                        <p>{{ review.body }}</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="container">
+                      <div class="mtb-60">
+                        <h4>Leave a Review for {{ location.name }} </h4>
+                        <div class="row mt-30">
+                            <form class="container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="input-lg form-full" value="" placeholder="Review Title" v-model="title" required />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="input-lg form-full" value="" placeholder="Location ID" v-model="location_id" required />
+                                    </div>
+                                    <!-- <div class="col-md-4">
+                                        <input type="text" class="input-lg form-full" value="" placeholder="User ID" v-model="user_id" required />
+                                    </div> -->
+                                    <div class="col-md-12">
+                                        <textarea placeholder="Review Body" class="form-full" v-model="body" required></textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button class="btn btn-lg btn-black" v-on:click="submit()">Post</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <!-- End Post Bar -->
+            </div>
+        </div>
+    </section>
   </div>
 </template>
 
