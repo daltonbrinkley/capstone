@@ -227,8 +227,9 @@ var LocationsShowPage = {
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
               return function() {
                 infowindow.setContent(
-                  '<h4>' + this.location.name + '</h4>' +
-                  '<img src="' + this.location.image + '" width=50>'
+                  '<h6>' + this.location.name + '</h6>' + 
+                  '<h8>' + this.location.address + '</h8>'
+                  // '<img src="' + this.location.image + '" width=150>'
                 );
                 infowindow.open(this.map, marker);
               }.bind(this);
