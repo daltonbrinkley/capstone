@@ -1,4 +1,4 @@
-/* global Vue, VueRouter, axios */
+/* global Vue, VueRouter, axios, google */
 
 var HomePage = {
   template: "#home-page",
@@ -196,7 +196,8 @@ var LocationsShowPage = {
       body: "",
       user_id: "",
       location_id: "",
-      errors: []
+      errors: [],
+      map: null
       // location: {
       //   name: "Location name goes here",
       //   address: "Location address goes here",
@@ -211,9 +212,43 @@ var LocationsShowPage = {
     axios.get("v1/locations/" + this.$route.params.id).then(
       function(response) {
         this.location = response.data;
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({'address': this.location.address}, function(results, status) {
+          if (status === 'OK') {
+            this.map.setCenter(results[0].geometry.location);
+
+            var marker = new google.maps.Marker({
+              map: this.map,
+              position: results[0].geometry.location
+            });
+
+            var infowindow = new google.maps.InfoWindow();
+            var i;
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+              return function() {
+                infowindow.setContent(
+                  '<h4>' + this.location.name + '</h4>' +
+                  '<img src="' + this.location.image + '" width=50>'
+                );
+                infowindow.open(this.map, marker);
+              }.bind(this);
+            }.bind(this))(marker, i)
+            );
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        }.bind(this));
+
         console.log(this.location);
       }.bind(this)
     );
+  },
+  mounted: function() {
+    this.map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: new google.maps.LatLng(41.892090, -87.634995),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
   },
   methods: {
     submit: function() {
