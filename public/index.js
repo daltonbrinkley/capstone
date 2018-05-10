@@ -240,7 +240,7 @@ var LocationsShowPage = {
           }
         }.bind(this));
 
-        console.log(this.location);
+        console.log('LOCATION', this.location);
       }.bind(this)
     );
   },
