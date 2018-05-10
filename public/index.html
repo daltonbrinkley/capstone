@@ -33,8 +33,8 @@
 
     <style>
         #map {
-            height: 300px;
-            width: 600px;
+            height: 200px;
+            width: 200px;
         }
     </style>
 </head>
@@ -610,6 +610,8 @@
                             <h1>{{ location.name }}</h1>
                         </div>
 
+                        <hr />
+
                         <div class="post-media">
                             <img alt="" v-bind:src="location.image">
                         </div>
@@ -617,10 +619,9 @@
 
                     <hr />
 
-                    <div id="map"></div>
 
                     <div class="post-comment mtb-30">
-                        <h4>Reviews</h4>
+                        <h2>Reviews.</h2>
                         <ul class="comment-list mt-30" v-for="review in location.reviews">
                             <li>
                                 <div class="comment-avatar">
@@ -668,12 +669,32 @@
                 <!-- Sidebar -->
                 <div class="col-lg-3 col-md-3 mt-sm-30">
                     <div class="sidebar-widget">
-                        <h5>Categories</h5>
+                        <h4>Address</h4>
+                        <hr>
+                        <h6>{{ location.address }}</h6>
+                    </div>
+                    <div class="sidebar-widget">
+                        <div id="map"></div>
+                    </div>
+                    <div class="sidebar-widget">
+                        <h4>Hours</h4>
+                        <hr>
+                        <h6>{{ location.hours }}</h6>
+                    </div>
+                    <div class="sidebar-widget">
+                        <h4>Phone Number</h4>
+                        <hr>
+                        <h6>{{ location.phone_number }}</h6>  
+                    </div>
+                    <div class="sidebar-widget">
+                        <h4>Categories</h4>
                         <hr>
                         <ul>
                             <li v-for="category in location.categories"><a>{{ category }}</a></li>
                         </ul>
                     </div>
+
+
 
                 </div>
                 <!-- End Sidebar -->
