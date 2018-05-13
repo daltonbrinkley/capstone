@@ -52,13 +52,13 @@
     <!-- End Preloader -->
 
     <!-- Search Overlay Menu -->
-    <!-- <div class="search-overlay-menu">
+    <div class="search-overlay-menu">
         <span class="search-overlay-close"><i class="ion ion-ios-close-empty"></i></span>
-        <form role="search" id="searchform" action="/search" method="get">
+        <form role="search" id="searchform" v-on:submit.prevent="searchLocationsByName()">
             <input value="" v-model="nameFilter" name="q" type="search" placeholder="Search by Name" />
             <button type="submit"><i class="ion ion-ios-search"></i></button>
         </form>
-    </div> -->
+    </div>
     <!-- End Search Overlay Menu -->
 
     <!-- Sidemenu -->
@@ -101,9 +101,9 @@
                 <div class="side-menu-btn">
                     <ul>
                         <!-- Search Icon -->
-<!--                         <li class="">
+                        <li class="">
                             <a class="search-overlay-menu-btn header-icon"><i class="fa fa-search"></i></a>
-                        </li> -->
+                        </li>
                         <!-- End Search Icon -->
 
                         <!--Sidebar Menu Icon-->
@@ -692,4 +692,5 @@
     </section>
   </div>
 </template>
+
 

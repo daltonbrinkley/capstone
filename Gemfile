@@ -20,6 +20,11 @@ gem 'knock'
 gem 'figaro'
 
 gem 'tty-table'
+
+#For Yelp Fusion API
+gem "http"
+
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production

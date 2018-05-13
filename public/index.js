@@ -38,6 +38,9 @@ var LocationsPage = {
       console.log(this.locations);
     }.bind(this)
     );
+    if (this.$route.query.name) {
+      this.nameFilter = this.$route.query.name;
+    }
   },
   methods: {
     setCurrentLocation: function(inputLocation) {
@@ -292,7 +295,8 @@ var router = new VueRouter({
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
     { path: "/logout", component: LogoutPage },
-    { path: "/locations/:id", component: LocationsShowPage}
+    { path: "/locations/:id", component: LocationsShowPage },
+    { path: "/yelp", component: YelpPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };
@@ -302,10 +306,21 @@ var router = new VueRouter({
 var app = new Vue({
   el: "#vue-app",
   router: router,
+  data: function() {
+    return {
+      nameFilter: ""
+    };
+  },
   created: function() {
     var jwt = localStorage.getItem("jwt");
     if (jwt) {
       axios.defaults.headers.common["Authorization"] = jwt;
+    }
+  },
+  methods: {
+    searchLocationsByName: function() {
+      console.log("searching...", this.nameFilter);
+      router.push("/locations?name=" + this.nameFilter);
     }
   },
   watch: {
