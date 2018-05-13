@@ -66,8 +66,8 @@
         <a id="menu-sidebar-close-icon" class="menu-close"><i class="ion ion-android-close"></i></a>
         <h5 class="white">Login</h5>
         <div class="sign-in">
-            <input class="input-sm form-full" type="email" aria-required="true" id="email" name="email" placeholder="Email" value="" />
-            <input class="input-sm form-full" type="password" aria-required="true" id="password" name="password" placeholder="Password" value="" />
+            <input class="input-sm form-full" type="email" aria-required="true" id="email" name="email" placeholder="Email" value="" v-model="email"/>
+            <input class="input-sm form-full" type="password" aria-required="true" id="password" name="password" placeholder="Password" value="" v-model="password" />
             <input type="submit" class="btn btn-md btn-color-b form-full" value="Login" v-on:click="submit()" />
             <a href="/#/signup">New to Percolate?</a>
         </div>
@@ -83,7 +83,6 @@
 
     <!-- Site Wraper -->
     <div class="wrapper">
-
         <!-- Header -->
         <header id="header" class="header">
             <div class="container header-inner">
@@ -142,6 +141,12 @@
                         <li>
                             <a class="menu-has-sub" href="/#/logout">Logout <i></i></a>
                         </li>
+                        <li>
+                        <a>Welcome {{ userName }}!</a>
+                        </li>
+                        <!-- <li>
+                            <a>Welcome{{ userName }}!</a>
+                        </li> -->
                     </ul>
                 </div>
                 <!-- End Navbar Navigation -->

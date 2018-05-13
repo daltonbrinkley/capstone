@@ -21,8 +21,7 @@ gem 'figaro'
 
 gem 'tty-table'
 
-#For Yelp Fusion API
-gem "http"
+gem 'yelp', require: 'yelp'
 
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

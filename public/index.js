@@ -177,9 +177,14 @@ var LoginPage = {
         .then(function(response) {
           axios.defaults.headers.common["Authorization"] =
             "Bearer " + response.data.jwt;
+
+          console.log(response.data.user);
+          this.$root.userName = response.data.user.first_name;
+
           localStorage.setItem("jwt", response.data.jwt);
+          localStorage.setItem("first_name", response.data.user.first_name);
           router.push("/");
-        })
+        }.bind(this))
         .catch(
           function(error) {
             this.errors = ["Invalid email or password."];
@@ -196,6 +201,7 @@ var LogoutPage = {
   created: function() {
     axios.defaults.headers.common["Authorization"] = undefined;
     localStorage.removeItem("jwt");
+    localStorage.removeItem("first_name");
     router.push("/");
   }
 };
@@ -295,8 +301,7 @@ var router = new VueRouter({
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
     { path: "/logout", component: LogoutPage },
-    { path: "/locations/:id", component: LocationsShowPage },
-    { path: "/yelp", component: YelpPage }
+    { path: "/locations/:id", component: LocationsShowPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };
@@ -308,11 +313,16 @@ var app = new Vue({
   router: router,
   data: function() {
     return {
-      nameFilter: ""
+      userName: "",
+      nameFilter: "",
+      email: "",
+      password: "",
+      errors: []
     };
   },
   created: function() {
     var jwt = localStorage.getItem("jwt");
+    this.userName = localStorage.getItem("first_name");
     if (jwt) {
       axios.defaults.headers.common["Authorization"] = jwt;
     }
@@ -321,6 +331,31 @@ var app = new Vue({
     searchLocationsByName: function() {
       console.log("searching...", this.nameFilter);
       router.push("/locations?name=" + this.nameFilter);
+    },
+    submit: function() {
+      var params = {
+        auth: { email: this.email, password: this.password }
+      };
+      axios
+        .post("/user_token", params)
+        .then(function(response) {
+          axios.defaults.headers.common["Authorization"] =
+            "Bearer " + response.data.jwt;
+
+          console.log('user info', response.data.user);
+          this.$root.userName = response.data.user.first_name;
+
+          localStorage.setItem("jwt", response.data.jwt);
+          localStorage.setItem("first_name", response.data.user.first_name);
+          router.push("/locations");
+        }.bind(this))
+        .catch(
+          function(error) {
+            this.errors = ["Invalid email or password."];
+            this.email = "";
+            this.password = "";
+          }.bind(this)
+        );
     }
   },
   watch: {
