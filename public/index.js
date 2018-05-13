@@ -28,7 +28,8 @@ var LocationsPage = {
   data: function() {
     return {
       message: "Welcome to the Locations Page!",
-      locations: []
+      locations: [],
+      nameFilter: "",
     };
   },
   created: function() {
@@ -38,7 +39,16 @@ var LocationsPage = {
     }.bind(this)
     );
   },
-  methods: {},
+  methods: {
+    setCurrentLocation: function(inputLocation) {
+      this.currentLocation = inputLocation;
+    },
+    isValidLocation: function(inputLocation) {
+      var lowerInputName = inputLocation.name.toLowerCase();
+      var lowerNameFilter = this.nameFilter.toLowerCase();
+      return lowerInputName.includes(lowerNameFilter);
+    },
+  },
   computed: {},
 };
 

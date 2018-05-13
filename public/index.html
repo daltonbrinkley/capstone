@@ -52,13 +52,13 @@
     <!-- End Preloader -->
 
     <!-- Search Overlay Menu -->
-    <div class="search-overlay-menu">
+    <!-- <div class="search-overlay-menu">
         <span class="search-overlay-close"><i class="ion ion-ios-close-empty"></i></span>
         <form role="search" id="searchform" action="/search" method="get">
-            <input value="" name="q" type="search" placeholder="Search..." />
+            <input value="" v-model="nameFilter" name="q" type="search" placeholder="Search by Name" />
             <button type="submit"><i class="ion ion-ios-search"></i></button>
         </form>
-    </div>
+    </div> -->
     <!-- End Search Overlay Menu -->
 
     <!-- Sidemenu -->
@@ -101,9 +101,9 @@
                 <div class="side-menu-btn">
                     <ul>
                         <!-- Search Icon -->
-                        <li class="">
+<!--                         <li class="">
                             <a class="search-overlay-menu-btn header-icon"><i class="fa fa-search"></i></a>
-                        </li>
+                        </li> -->
                         <!-- End Search Icon -->
 
                         <!--Sidebar Menu Icon-->
@@ -352,8 +352,14 @@
         <section class="ptb ptb-sm-80">
             <div class="container">
                 <!-- Post Item -->
+
+                <h2>Search Locations:</h2>
+                <input type="text" class="input-lg form-full" v-model="nameFilter" placeholder="Search by Name">
+
+                <hr />
+                
                 <div class="row container-grid">
-                    <div v-for="location in locations" class="col-md-4 col-sm-6 nf-item spacing-grid">
+                    <div v-for="location in locations" v-if="isValidLocation(location)" class="col-md-4 col-sm-6 nf-item spacing-grid">
                         <div class="blog-post">
                             <div class="post-media">
                                 <img class="item-container" v-bind:src="location.image" alt="1" />
