@@ -1,4 +1,4 @@
-/* global Vue, VueRouter, axios, google */
+/* global Vue, VueRouter, axios, google, polyfill */
 
 var HomePage = {
   template: "#home-page",
@@ -14,6 +14,9 @@ var HomePage = {
       console.log(this.reviews);
     }.bind(this)
     );
+  },
+  mounted: function() {
+    polyfill();
   },
   methods: {},
   computed: {
@@ -35,6 +38,13 @@ var LocationsPage = {
   created: function() {
     axios.get("v1/locations").then(function(response) { 
       this.locations = response.data;
+      Vue.nextTick(function() {
+        console.log('update height...');
+        // console.log(this.$el.clientHeight);
+        // containerGridMasonry();
+        // initTheme();
+        // int_nav_menu_height();
+      });
       console.log(this.locations);
     }.bind(this)
     );

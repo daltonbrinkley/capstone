@@ -1,6 +1,6 @@
 
 
-$(function () {
+var initTheme = function() {
     "use strict";
 
 
@@ -734,4 +734,9 @@ $(function () {
     };
 
 
+};
+
+
+$(function() {
+    initTheme();
 });
