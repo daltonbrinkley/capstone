@@ -28,7 +28,7 @@
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
     <script src="index.js" defer></script>
 
-     <script src="https://maps.googleapis.com/maps/api/js">
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places">
     </script>
 
     <style>
@@ -342,7 +342,7 @@
 <template id="locations-page">
   <div class="vue-component" style="min-height: 600vh">
   <!-- Intro Section -->
-        <section class="inner-intro dark-bg bg-image overlay-dark parallax parallax-background1" data-background-img="locations_page.jpg">
+        <section class="inner-intro dark-bg bg-image overlay-dark parallax parallax-background1" data-background-img="locations_page2.jpg">
             <div class="container">
                 <div class="row title">
                     <h2 class="h2">Locations</h2>
@@ -414,8 +414,11 @@
                     <div class="col-md-12">
                         <input type="text" class="input-lg form-full" value="" placeholder="Location Name" v-model="name" required />
                     </div>
-                    <div class="col-md-12">
+<!--                     <div class="col-md-12">
                         <input type="text" class="input-lg form-full" value="" placeholder="Address (Example: 2850 N Clark St, Chicago, IL 60657)" v-model="address" required />
+                    </div> -->
+                    <div class="col-md-12">
+                        <input ref="autocomplete" onfocus= "value = ''" type="text" class="input-lg form-full" value="" placeholder="Address (Example: 2850 N Clark St, Chicago, IL 60657)" v-model="address" required />
                     </div>
                     <div class="col-md-12">
                         <input type="text" class="input-lg form-full" value="" placeholder="Hours (Example: 11AM - 9PM)" v-model="hours" required />
@@ -581,7 +584,7 @@
 <template id="location-show-page">
   <div class="vue-component">
     <!-- Intro Section -->
-    <section class="inner-intro dark-bg bg-image overlay-dark parallax parallax-background1" data-background-img="locations_page.jpg">
+    <section class="inner-intro dark-bg bg-image overlay-dark parallax parallax-background1" data-background-img="adults-agenda-cafe-1056551.jpg">
         <div class="container">
             <div class="row title">
                 <h2 class="h2">{{ location.name }}</h2>

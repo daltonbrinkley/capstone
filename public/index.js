@@ -67,6 +67,33 @@ var LocationsPage = {
 
 var LocationsNewPage = {
   template: "#locations-new-page",
+  mounted() {
+    this.autocomplete = new google.maps.places.Autocomplete(
+      (this.$refs.autocomplete),
+      {types: ['establishment']}
+    );
+    this.autocomplete.addListener('place_changed', () => {
+      let place = this.autocomplete.getPlace();
+      let ac = place.address_components;
+      let lat = place.geometry.location.lat();
+      let lon = place.geometry.location.lng();
+      let city = ac[0]["short_name"];
+
+      console.log(`The user picked ${city} with the coordinates ${lat}, ${lon}`);
+
+      var address = '';
+      if (place.address_components) {
+        address = place.formatted_address;
+        // address = [
+        //   (place.address_components[0] && place.address_components[0].short_name || ''),
+        //   (place.address_components[1] && place.address_components[1].short_name || ''),
+        //   (place.address_components[2] && place.address_components[2].short_name || '')
+        // ].join(' ');
+        console.log('the address is ', address);
+        this.address = address;
+      }
+    });
+  },
   data: function() {
     return {
       name: "",
