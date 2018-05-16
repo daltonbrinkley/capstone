@@ -84,13 +84,29 @@ var LocationsNewPage = {
       var address = '';
       if (place.address_components) {
         address = place.formatted_address;
-        // address = [
-        //   (place.address_components[0] && place.address_components[0].short_name || ''),
-        //   (place.address_components[1] && place.address_components[1].short_name || ''),
-        //   (place.address_components[2] && place.address_components[2].short_name || '')
-        // ].join(' ');
         console.log('the address is ', address);
         this.address = address;
+      }
+
+      var phoneNumber = '';
+      if (place.address_components) {
+        phoneNumber = place.formatted_phone_number;
+        console.log('the phone number is', phoneNumber);
+        this.phone_number = phoneNumber;
+      }
+
+      // var hours = '';
+      // if (place.address_components) {
+      //   hours = place.opening_hours.periods[2].open;
+      //   console.log('the hours are', hours);
+      //   this.hours = hours;
+      // }
+
+      var website = '';
+      if (place.address_components) {
+        website = place.website;
+        console.log('the website is', website);
+        this.website = website;
       }
     });
   },
