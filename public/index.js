@@ -21,7 +21,7 @@ var HomePage = {
   methods: {},
   computed: {
     topReviews: function() {
-      return this.reviews.slice(0, 3);
+      return this.reviews.slice(5, 8);
     }
   }
 };
