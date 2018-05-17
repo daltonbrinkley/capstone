@@ -329,7 +329,7 @@ var LocationsShowPage = {
         input_title: this.title,
         input_body: this.body,
         input_user_id: this.user_id,
-        input_location_id: this.location_id
+        input_location_id: this.$route.params.id
       };
       axios
         .post("/v1/reviews", params)

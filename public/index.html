@@ -639,12 +639,12 @@
                         <div class="row mt-30">
                             <form class="container">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <input type="text" class="input-lg form-full" value="" placeholder="Review Title" v-model="title" required />
                                     </div>
-                                    <div class="col-md-6">
+                                    <!-- <div class="col-md-6">
                                         <input type="text" class="input-lg form-full" value="" placeholder="Location ID" v-model="location_id" required />
-                                    </div>
+                                    </div> -->
                                     <!-- <div class="col-md-4">
                                         <input type="text" class="input-lg form-full" value="" placeholder="User ID" v-model="user_id" required />
                                     </div> -->
@@ -690,7 +690,8 @@
                     </div>
                     <div>
                         <p>
-                            <button class="btn btn-lg btn-black">Location Website</button>
+                            <!-- <button class="btn btn-lg btn-black">Location Website</button> -->
+                            <a class="btn btn-lg btn-black" target="_blank" v-bind:href="location.website">Location Website</a>
                         </p>
                     </div>
                 </div>

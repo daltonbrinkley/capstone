@@ -182,9 +182,9 @@ location_id: location.id
 review.save
 
 review = Review.new({
-title: "Next Door has free Classes", 
-body: "You can attend free classes (graphic design, marketing, etc) and book a booth for more comfortable group study.", 
-user_id: 6, 
+title: "Extremely accommodating", 
+body: "There's outlets, extension cords, marker boards, private study cubes, meeting rooms which are all free to use. They also host events for the community on different subjects.", 
+user_id: 5, 
 location_id: location.id
 })
 review.save
